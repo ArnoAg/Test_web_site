@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Test Pathfinding</title>
+</head>
+<body>
+
+<h1>Test API Flask → Render</h1>
+
+<button onclick="testAPI()">Tester chemin</button>
+
+<pre id="output"></pre>
+
+<script>
+const API_URL = "https://TON-BACKEND.onrender.com"; // à remplacer
+
+async function testAPI() {
+    const res = await fetch(`${API_URL}/api/pathfind?ax=0&az=0&bx=5&bz=5`);
+    const data = await res.json();
+
+    document.getElementById("output").textContent =
+        JSON.stringify(data, null, 2);
+}
+</script>
+
+</body>
+</html>
