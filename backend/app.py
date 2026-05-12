@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
@@ -15,7 +17,6 @@ def pathfind():
     bx = float(request.args.get("bx", 1))
     bz = float(request.args.get("bz", 1))
 
-    # simulation de chemin (remplace ton A*)
     path = [
         [ax, az],
         [(ax + bx) / 2, (az + bz) / 2],
@@ -28,4 +29,5 @@ def pathfind():
     })
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
